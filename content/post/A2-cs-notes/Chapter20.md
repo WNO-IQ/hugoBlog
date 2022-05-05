@@ -59,9 +59,14 @@ categories = [
 - **Low-level scheduler** - makes decisions about which process stored in memory should have access to the CPU
 
 ### Process states
-
 - At this stage a `process control block (PCB)` can be created in memory ready to receive data when the process is executed.
-- The transitions between the states shown in Figure 20.05 can be described as follows. - A `new process` arrives in memory and a PCB is created; it changes to the `ready state`. - A process in the ready state is `given access to the CPU by the dispatcher`; it changes to the `running state`. - A process in the running state is `halted by an interrupt`; it returns to the `ready state`. - A process in the running state `cannot progress until some event has occurred (I/O perhaps)`; it changes to the `waiting state` (sometimes called the ‘suspended’ or ‘blocked’ state). - A process in the waiting state is `notified that an event is completed`; it returns to the `ready state`. - A process in the running state `completes execution`; it changes to the `terminated state`.
+- The transitions between the states shown in Figure 20.05 can be described as follows.
+- A `new process` arrives in memory and a PCB is created; it changes to the `ready state`.
+- A process in the ready state is `given access to the CPU by the dispatcher`; it changes to the `running state`.
+- A process in the running state is `halted by an interrupt`; it returns to the `ready state`.
+- A process in the running state `cannot progress until some event has occurred (I/O perhaps)`; it changes to the `waiting state` (sometimes called the ‘suspended’ or ‘blocked’ state).
+- A process in the waiting state is `notified that an event is completed`; it returns to the `ready state`.
+- A process in the running state `completes execution`; it changes to the `terminated state`.
   ![](cs-note-img/Pastedimage20211122145524.png)
 
 - **Process** - a program in memory that has an associated process control block
