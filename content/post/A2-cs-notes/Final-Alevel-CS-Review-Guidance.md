@@ -13,15 +13,15 @@ categories = [
 image = "cs-note-img/wallhaven-wq5m26.png"
 +++
 
-# Data Representation
-## User-defined data types
+## Data Representation
+### User-defined data types
 ![](cs-note-img/Pastedimage20220511190506.png)
-### Non-composite types
+#### Non-composite types
 - enumerated
     - `TYPE Courses = (English,Chinese,Maths)`
 - pointer
     - `TYPE SelectParts = ^Parts  // It reference the memory location in thich the part is stored`
-### Define & Use composite data types
+#### Define & Use composite data types
 - set, record and class/object
 - Pseudocode example of class:
 ```pseudocode
@@ -33,8 +33,8 @@ ENDTYPE
 ```
 <br>
 
-## File organisation and access
-### Organisation
+### File organisation and access
+#### Organisation
 - Serial
  ![](cs-note-img/Pastedimage20220511192816.png)
 
@@ -46,13 +46,13 @@ ENDTYPE
     - A separate index file is created which has two fields per record.
     - The first field has the key field value and the second field has a value for the position of this key field value in the main file.
 
-### Access
+#### Access
 - Sequential
 - Direct
 
 <br>
 
-## Floating-point numbers, representation and manipulation
+### Floating-point numbers, representation and manipulation
 - Overflow
 - Underflow
 - Rounding errors
@@ -63,20 +63,20 @@ ENDTYPE
 
 ----
 
-# Communication and internet technologies
-## Protocols
-### Importance
+## Communication and internet technologies
+### Protocols
+#### Importance
 ![](cs-note-img/Pastedimage20220511194104.png)
-### TCP/IP
+#### TCP/IP
 ![](cs-note-img/Pastedimage20220511194418.png)
 ![](cs-note-img/Pastedimage20220511194108.png)
-### Bittorrent
+#### Bittorrent
 - file sharing
 - peer-to-peer
 
 ![](cs-note-img/Pastedimage20220511194119.png)
 
-### Other protocols
+#### Other protocols
 - FTP
 - IMAP, SMTP, POP3
 - HTTP
@@ -86,20 +86,20 @@ ENDTYPE
 
 <br>
 
-## Circuit switching, packet switching
-### Packet
+### Circuit switching, packet switching
+#### Packet
 ![](cs-note-img/Pastedimage20220511194048.png)
-### Circuit
+#### Circuit
 -  A method of data transfer in which the message is sent over a dedicated communication channel.
 
 
 ----
 
-# Hardware and Virtual Machines
-## Processors, Parallel Processing and Virtual Machines
-### Reduced Instruction Set Computers (RISC)
-### Complex Instruction Set Computers (CISC)
-### Parallel processing
+## Hardware and Virtual Machines
+### Processors, Parallel Processing and Virtual Machines
+#### Reduced Instruction Set Computers (RISC)
+#### Complex Instruction Set Computers (CISC)
+#### Parallel processing
 - SISD
 - SIMD
 - MISD
@@ -110,8 +110,8 @@ ENDTYPE
 
 <br>
 
-## Logic Circuits
-### Half-adder
+### Logic Circuits
+#### Half-adder
 
 ![](cs-note-img/Pastedimage20220511201803.png)
 
@@ -122,7 +122,7 @@ ENDTYPE
 
 <br>
 
-### Full-adder
+#### Full-adder
 - 3 input
 - 2 output   
     - carry bit
@@ -130,42 +130,42 @@ ENDTYPE
 
 <br>
 
-### Flip-flop
-#### SR
+#### Flip-flop
+##### SR
 - It can be constructed with two NAND gates or two NOR gates.
 - Used as a storage device for 1 bit in the RAM, since it’s values can be altered
 - Issue: When the both the input signals are 1 (invalid state) the flip-flop sets the value of Q and Q’ to 0.
 
 ![](cs-note-img/Pastedimage20220511201405.png)
 
-#### JK
+##### JK
 - The J acts as a set input and the K as a clear input.
 - There is a clock input to synchronise the inputs.
 - When both the input signals are one, Q toggles.
 
 ![](cs-note-img/Pastedimage20220511201448.png)
 
-#### Usage
+##### Usage
 - Flip-flops are used to build
     - Data storage elements
     - Digital circuits
 
 <br>
 
-## Boolean Algebra
+### Boolean Algebra
 
 ![](cs-note-img/Pastedimage20220511201901.png)
 
 <br>
 
-### Karnaugh maps
+#### Karnaugh maps
 ![](cs-note-img/Pastedimage20220511201954.png)
 
 
 ----
 
-# System Software
-## Purposes of an Operating System (OS)
+## System Software
+### Purposes of an Operating System (OS)
 - OS provides utility software, user interface (GUI,CLI), resources management, multi-tasking, a platform to run code......
 
 
@@ -178,21 +178,21 @@ ENDTYPE
 ![](cs-note-img/Pastedimage20220511202915.png)
 <br>
 
-## Translation Software
+### Translation Software
 
 ![](cs-note-img/Pastedimage20220511202937.png)
 ![](cs-note-img/Pastedimage20220511202956.png)
 <br>
 
 
-### BNF notation
+#### BNF notation
 ![](cs-note-img/Pastedimage20220512090545.png)
 - `::=`
 - `|`
 
 <br>
 
-### RPN expression
+#### RPN expression
 ![](cs-note-img/Pastedimage20220512083731.png)
 ```
 Origin expression:
@@ -218,89 +218,90 @@ Proccess:
 /为运算符，将栈顶两元素相除，结果入栈
 +为运算符，将栈顶两元素相加，结果入栈
 *为运算符，将栈顶两元素相乘，结果入栈
+......
 ```
 
 ----
 
-# Security
-## Encryption, Encryption Protocols and Digital certificates
+## Security
+### Encryption, Encryption Protocols and Digital certificates
 - public key, private key, plain text, cipher text, encryption
 - <mark style="background: #FFF3A3A6;">symmetric</mark> key cryptography and <mark style="background: #FFF3A3A6;">asymmetric</mark> key cryptography
 
 <br>
 
-### Symmetric key encryption
+#### Symmetric key encryption
 ![](cs-note-img/Pastedimage20220512093231.png)
 ![](cs-note-img/Pastedimage20220512093357.png)
 
 <br>
 
-### Asymmetric key encryption
+#### Asymmetric key encryption
 ![](cs-note-img/Pastedimage20220512095223.png)
 ![](cs-note-img/Pastedimage20220512095353.png)
 
-#### Private keys & public key
+##### Private keys & public key
 ![](cs-note-img/Pastedimage20220512091128.png)
 
 <br>
 
-### Digital certificate
+#### Digital certificate
 ![](cs-note-img/Pastedimage20220512091041.png)
 ![](cs-note-img/Pastedimage20220512091102.png)
 <br>
 
-### Digital signature
+#### Digital signature
 ![](cs-note-img/Pastedimage20220512091149.png)
 ![](cs-note-img/Pastedimage20220512092527.png)
 ![](cs-note-img/Pastedimage20220512092653.png)
 <br>
 
-### Quantum cryptography
+#### Quantum cryptography
 ![](cs-note-img/Pastedimage20220512093850.png)
 
 <br>
 
-### SSL & TLS
+#### SSL & TLS
 ![](cs-note-img/Pastedimage20220512095609.png)
 ![](cs-note-img/B5629FD36BB6453BB2B402113D793E0E.jpg)
 ![](cs-note-img/Pastedimage20220512095708.png)
 
 <br>
 
-### How to establish a secure connection
+#### How to establish a secure connection
 ![](cs-note-img/Pastedimage20220512091200.png)
 ![](cs-note-img/AB6B3D4112E947F696C2FBCFDF8869B7.jpg)
 
 
 ----
 
-# Artificial Intelligence (AI)
+## Artificial Intelligence (AI)
 [Please check the note released before🔗](https://hugo-blog-fawn.vercel.app/p/chapter-22-artificial-intelligence-ai/)
 
 
 ----
 
-# Computational thinking and problem-solving
-## Algorithms
+## Computational thinking and problem-solving
+### Algorithms
 [Please check the note released before🔗](https://hugo-blog-fawn.vercel.app/p/chapter-23-algorithms/)
 
 
-## Recursion
+### Recursion
 ![](cs-note-img/Pastedimage20220512103904.png)
 ![](cs-note-img/Pastedimage20220512103946.png)
 <br>
 
-### Description
+#### Description
 - have a base case
 - have a general case
 - reach the base case aft er a finite (limited) number of calls to itself.
-### Benefits
+#### Benefits
 - More elegant
 - Use less program code than iterative solutions
-### Drawbacks
+#### Drawbacks
 - Large amounts of memory usage and processor time
 
-### How to implement recursion (<mark style="background: #FFF3A3A6;">Stack</mark>)
+#### How to implement recursion (<mark style="background: #FFF3A3A6;">Stack</mark>)
 - Each time a subroutine is called, a stack frame is pushed onto the stack.
 - A stack frame consists of the return address and the values of the local variables.
 - When a subroutine completes, the corresponding stack frame is popped off the stack.
@@ -308,15 +309,15 @@ Proccess:
 
 ----
 
-# Further Programming
-## Programming Paradigms
+## Further Programming
+### Programming Paradigms
 - A programming style/classification
 // characteristics/features that programming language has/uses
 
-### Low-level Programming
+#### Low-level Programming
 - Programs use the instruction set of a processor
 
-#### Addressing mode
+##### Addressing mode
 - immediate
 - direct
 - indirect
@@ -324,11 +325,11 @@ Proccess:
 - relative
 
 
-### Imperative Programming (<mark style="background: #FFF3A3A6;">Sequence of commands</mark>)
+#### Imperative Programming (<mark style="background: #FFF3A3A6;">Sequence of commands</mark>)
 
 ![](cs-note-img/Pastedimage20220512110107.png)
 
-### Object Oriented Programming
+#### Object Oriented Programming
 
 ![](cs-note-img/Pastedimage20220512110120.png)
 ![](cs-note-img/OOPfeaturs.png)
@@ -336,13 +337,13 @@ Proccess:
 
 <br>
 
-### Declarative Programming (<mark style="background: #FFF3A3A6;">Focus on the result</mark>)
+#### Declarative Programming (<mark style="background: #FFF3A3A6;">Focus on the result</mark>)
 - The programmer doesn’t tell the computer what to do. To get information, the programmer poses a query (sets a goal). It’s up to the logic programming system to work out how to get the answer.
 - Declarative programming languages include SQL and Prolog.
 
-## File Processing and Exception Handling
-### Record
-#### Pseudocode
+### File Processing and Exception Handling
+#### Record
+##### Pseudocode
 
 ```Pseudocode
 TYPE CarRecord
@@ -358,7 +359,7 @@ DECLARE Car : ARRAY[1:100] OF CarRecord // store the details of 100 cars
 ```
 
 
-#### Python3
+##### Python3
 ```Python
 class CarRecord:              # declaring a class without other methods
     def __init__(self):       # constructor
@@ -374,8 +375,8 @@ Car = [CarRecord() for i in range(100)] # make a list of 100 car records
 Car[1].EngineSize = 2500 # assign value to a field of the 2nd car in list
 ```
 
-### File processing
-#### Psedocode
+#### File processing
+##### Psedocode
 |Structured English|Pseudocode|
 |:----|:----|
 |Create a file and open it for writing|OPENFILE \<filename> FOR WRITE|
@@ -388,11 +389,11 @@ Car[1].EngineSize = 2500 # assign value to a field of the 2nd car in list
 |Move to a specific disk address within the file|SEEK \<filename>, \<address>|
 |Test for end of file|EOF(\<filename>)|
 
-### Python3
+#### Python3
 ```Python3
 file = open("filename",mode=?)   //create a file object
 ```
-#### Recommanded mode parameter
+##### Recommanded mode parameter
 - `'w'` for write
 - `'r'` for read
 - `'a'` for append
@@ -404,7 +405,7 @@ file = open("filename",mode=?)   //create a file object
 
 <br>
 
-#### Detail mode parameters
+##### Detail mode parameters
 <table class="reference">
 <tbody><tr><th style="width:10%">模式</th><th>描述</th></tr>
 <tr><td>t</td><td>文本模式 (默认)。</td></tr>
@@ -429,7 +430,7 @@ file = open("filename",mode=?)   //create a file object
 
 <br>
 
-#### Some file fuctions
+##### Some file fuctions
 <table class="reference">
 <tbody><tr>
 <th style="width:5%">序号</th><th>方法及描述</th></tr>
@@ -447,14 +448,14 @@ file = open("filename",mode=?)   //create a file object
 
 <br>
 
-### Exception
+#### Exception
 ![](cs-note-img/Pastedimage20220512135315.png)
 ![](cs-note-img/Pastedimage20220512135502.png)
 ![](cs-note-img/Pastedimage20220512135622.png)
 <br>
 
-#### Code language
-##### Pseudocode
+##### Code language
+###### Pseudocode
 ```Pseudocode
 TRY
     <statementsA>
@@ -478,9 +479,9 @@ ENDTRY
 - FINALLY - The statements (`<statementsC>`) in this block will be executed regardless of whether there was an exception or not.
 
 
-##### Python3
+###### Python3
 ```Python
-# Basic try and exception examples
+## Basic try and exception examples
 file = open("test.txt",mode='r')
 
 
@@ -529,5 +530,5 @@ except ValueError:
 except:  
     print("Unexpected error:", sys.exc_info()[0])
 ```
-###### More info
+####### More info
 - [Python3 错误和异常 | 菜鸟教程 (runoob.com)🔗](https://www.runoob.com/python3/python3-errors-execptions.html)
