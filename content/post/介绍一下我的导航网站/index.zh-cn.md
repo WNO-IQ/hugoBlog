@@ -4,7 +4,7 @@ title = "介绍一下我的导航网站"
 date = "2021-12-01"
 description = "自建导航网站的介绍"
 tags = [
-    "My website"
+    "我的网站"
 ]
 categories = [
     "分享"

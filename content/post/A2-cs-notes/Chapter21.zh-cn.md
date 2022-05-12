@@ -5,8 +5,8 @@ date = "2021-12-06"
 
 description = "我的A2计算机科学笔记"
 tags = [
-    "Notes",
-    "Study"
+    "笔记",
+    "学习"
 ]
 keywords = ["CIE","Alevel","A2","Computer Science","Notes"]
 categories = [
