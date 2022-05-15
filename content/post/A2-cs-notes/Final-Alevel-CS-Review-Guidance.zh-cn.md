@@ -20,7 +20,7 @@ image = "cs-note-img/wallhaven-wq5m26.png"
 - enumerated
     - `TYPE Courses = (English,Chinese,Maths)`
 - pointer
-    - `TYPE SelectParts = ^Parts  // It reference the memory location in thich the part is stored`
+    - `TYPE SelectParts = ^Parts  // It reference the memory location in which the part is stored`
 #### Define & Use composite data types
 - set, record and class/object
 - Pseudocode example of class:
