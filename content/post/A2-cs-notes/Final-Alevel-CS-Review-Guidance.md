@@ -530,5 +530,6 @@ except ValueError:
 except:  
     print("Unexpected error:", sys.exc_info()[0])
 ```
-####### More info
+
+###### More info about exception in Python3
 - [Python3 错误和异常 | 菜鸟教程 (runoob.com)🔗](https://www.runoob.com/python3/python3-errors-execptions.html)
