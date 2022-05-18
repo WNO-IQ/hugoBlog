@@ -166,4 +166,4 @@ The neural networks in our brains provide our intelligence. It therefore seems o
 
 ## Additional file
 
-[Powerpoint of Chapter 22 from my teacher](https://github.com/emm-Xe/emm-Xe.github.io/raw/master/static/additional-file/Chapter_22.pdf)
+[Powerpoint of Chapter 22 from my teacher](https://hugo-blog-fawn.vercel.app/additional-file/Chapter_22.pdf)
