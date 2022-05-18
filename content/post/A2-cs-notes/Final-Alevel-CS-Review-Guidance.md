@@ -321,7 +321,7 @@ Proccess:
 - immediate
 - direct
 - indirect
-- indexe
+- indexed
 - relative
 
 
