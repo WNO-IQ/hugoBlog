@@ -1,5 +1,5 @@
 # Change baseurl before deploy
-baseurl = "https://blog.lifein.icu"
+baseurl = "https://hugo-blog-fawn.vercel.app/"
 languageCode = "en-us"
 paginate = 5
 title = "我无IQ的blog"
