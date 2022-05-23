@@ -430,6 +430,38 @@ file = open("filename",mode=?)   //create a file object
 
 <br>
 
+##### Sequence file processing
+- To store records in binary file, we can use module `pickle`. 
+```Python
+# 3 most important codes
+import pickle
+pickle.dump(item,file)
+pickle.load(file_content)
+```
+1. You need to import the module.
+2. Read/write a `file object` via the binary mode (mode=`'wb'`/`'rb'`/etc.)
+
+###### Code example
+```Python
+import pickle # this library is required to create binary files
+Car = [CarRecord() for i in range(100)]
+
+CarFile = open('CarFile.DAT', 'wb') # open file for binary write
+for i in range(100): # loop for each array element
+    pickle.dump(Car[i], CarFile) # write a whole record to the binary file
+
+CarFile.close() # close file
+
+CarFile = open('CarFile.DAT', 'rb') # open file for binary read
+
+Car = [] # start with empty list
+while True: # check for end of file
+    Car.append(pickle.load(CarFile)) # append record from file to end of list
+
+CarFile.close()
+```
+
+
 ##### Some file fuctions
 <table class="reference">
 <tbody><tr>
