@@ -17,8 +17,6 @@ math = true
 
 # Chapter 23: Algorithms
 
-> Python part of some ADTs are not finished yet (only pseudocode now)
-
 ## Linear search
 
 **Linear search**: Start at the first element of the array and check each element in turn until the search value is found or the end of the array is reached.
@@ -46,42 +44,41 @@ In effect we perform a loop within a loop, a nested loop. This method is known a
 | j          | INTEGER               | Counter for inner loop                               |
 | Temp       | INTEGER               | Variable for temporary storage while swapping values |
 
-The algorithm in pseudocode is:
+### Pseudocode
 
 ```Pseudocode
+# index starts from 1
 REPEAT
-	NoSwaps ← TRUE
-	FOR j ← 1 TO n
-		IF MyList[j] > MyList[j + 1]
-			THEN
-				Temp ← MyList[j]
-				MyList[j] ← MyList[j + 1]
-				MyList[j + 1] ← Temp
-				NoSwaps ← FALSE
-		ENDIF
-	ENDFOR
-	n ← n - 1
+    NoSwaps ← TRUE
+    FOR j ← 1 TO n
+        IF MyList[j] > MyList[j + 1]
+            THEN
+                Temp ← MyList[j]
+                MyList[j] ← MyList[j + 1]
+                MyList[j + 1] ← Temp
+                NoSwaps ← FALSE
+        ENDIF
+    ENDFOR
+    n ← n - 1
 UNTIL NoSwaps ← TRUE
 ```
 
 <br>
 
-The algorithm in Python3 is:
+### Python
 
 ```python
-def BubbleSort(alist):
-    NoSwaps = False
-    length = len(alist) - 1
-    while NoSwaps == False:
-        NoSwaps = True
-        for i in range(0,length):
-            First = alist[i]
-            Second = alist[i+1]
-            if First > Second:
-				alist[i],alist[i+1]=alist[i+1],alist[i]
-            	NoSwaps = False
+def bubble(unsorted):
+    noswap = False
+    length = len(unsorted)-1
+    while noswap == False:
+        noswap = True
+        for i in range(length):
+            if unsorted[i] > unsorted[i+1]:
+                unsorted[i],unsorted[i+1] = unsorted[i+1],unsorted[i]
+                noswap = False
         length = length - 1
-    return alist
+    return unsorted
 ```
 
 <br>
@@ -100,34 +97,35 @@ Repeat the following steps until all cards in the unsorted pile have been insert
 4. Otherwise, if there is a card above the current card in your hand, make this your new current card.
 5. If there is no new current card, place the card to be inserted at the top of the sorted pile.
 
-Algorithm in pseudocode:
+### Pseudocode
 
 ```Pseudocode
-FOR i ← 1 TO NumberOfitems – 1
-	ItemToBeInserted ← List[i]
- 	CurrentItem ← i – 1
- 	WHILE (List[CurrentItem] > ItemToBeInserted) AND (CurrentItem > –1) DO
- 		List[CurrentItem + 1] ← List[CurrentItem]
- 		CurrentItem ← CurrentItem – 1
- 	ENDWHILE
- 	List[CurrentItem + 1] ← ItemToBeInserted
+# index starts from 1
+# TOTAL : N
+FOR i ← 2 TO N
+    Temp ← Number [ i ]
+    j ← i – 1
+    WHILE ( Number [ j ] > Temp ) AND ( j > 0 )
+        Number [ j + 1 ] ← Number [ j ]
+        j ← j - 1
+    ENDWHILE
+    Number [ j + 1 ] ← Temp
 ENDFOR
 ```
 
 <br>
 
-Algorithm in Python3:
+### Python
 
 ```python
-def InsertionSort(alist):
-	for i in range(1, len(alist)):
-		key = alist[i]
-		j = i-1
-		while j >=0 and key < alist[j] :
-			alist[j+1] = alist[j]
-			j = j - 1
-		alist[j+1] = key
-	return alist
+def insertion(unsorted):
+    for i in range(1,len(unsorted)):
+        j = i - 1
+        if unsorted[i] < unsorted[j]:
+            while j>=0 and unsorted[i] < unsorted[j]:
+                unsorted[i],unsorted[j] = unsorted[j],unsorted[i]
+                j,i = j-1,i-1
+    return unsorted
 ```
 
 <br>
@@ -143,55 +141,59 @@ def InsertionSort(alist):
 
 **Binary search**: repeated checking of the middle item in an ordered search list and discarding the half of the list which does not contain the search item.
 
-Algorithm in pseudocode:
+### Pseudocode
 
 ```Pseudocode
-Found←FALSE
-SearchFailed←FALSE
-First←0
-Last←MaxItems–1
-WHILE NOT Found AND NOT SearchFailed DO
-	Middle←(First+Last) DIV 2
-	IF List[Middle]=SearchItem
-	THEN
-		Found←TRUE
-	ELSE
-		IF First>=Last
-			THEN
-				SearchFailed←TRUE
-			ELSE
-				IF List[Middle]>SearchItem
-					THEN
-						Last←Middle-1
-					ELSE
-						First←Middle+1
-				ENDIF
-		ENDIF
+# index starts from 1
+Found ← FALSE
+SearchFailed ← FALSE
+First ← 1
+Last ← Total
+WHILE ( NOT Found ) AND ( NOT SearchFailed )
+    Middle ← ( First + Last ) / 2
+    IF Number [ Middle ] = SearchNumber
+        THEN
+            Found ← TRUE
+        ELSE
+            IF First >= Last
+                THEN
+                    SearchFailed ← TRUE
+                ELSE
+                    IF Number [ Middle ] > SearchNumber
+                        THEN
+                            Last ← Middle - 1
+                        ELSE
+                            First ← Middle+ 1
+                    ENDIF
+            ENDIF
 	ENDIF
 ENDWHILE
-IF Found=TRUE
-	THEN
-	OUTPUT Middle
-	ELSE
-		OUTPUT "Item not present in array"
+IF Found = TRUE
+    THEN
+        OUTPUT Middle
+    ELSE
+        OUTPUT " Number is not found "
 ENDIF
+
 ```
 
 <br>
 
-Algorithm in Python3:
+### Python
 
 ```python
-def binary_search(item,alist):
-	length = len(alist)
-	found = False
-	while found == False and (length != 0 or length != len(alist)-1) and (alist[0]<=item<=alist[len(alist)-1]):
-		if alist[(length//2)] > item:
-			length = length - (length//2)
-		elif alist[(length//2)] == item:
-			found = True
-		else:
-			length = length + (length//2)
+def binary_search(alist,item):
+    found = False
+    first = 0
+    last = len(alist)
+    while found == False and first < last:
+        key = (first+last)//2
+        if item == alist[key]:
+            found = True
+        elif item < alist[key]:
+            last = key - 1
+        else:
+            first = key + 1
     return found
 ```
 
@@ -199,11 +201,11 @@ def binary_search(item,alist):
 
 ## Abstract Data Types (ADTs)
 
-## Linked lists
+### Linked lists
 
-### Pseudocode example:
+#### Pseudocode
 
-#### Create a new linked list
+##### Create a new linked list
 
 ```Pseudocode
 // NullPointer should be set to -1 if using array element with index 0
@@ -226,7 +228,7 @@ PROCEDURE InitialiseList
 ENDPROCEDURE
 ```
 
-#### Insert a new node into an ordered linked list
+##### Insert a new node into an ordered linked list
 
 ```Pseudocode
 PROCEDURE InsertNode(NewItem)
@@ -257,7 +259,7 @@ PROCEDURE InsertNode(NewItem)
 ENDPROCEDURE
 ```
 
-#### Find an element in an ordered linked list
+##### Find an element in an ordered linked list
 
 ```Pseudocode
 FUNCTION FindNode(DataItem) RETURNS INTEGER // returns pointer to node
@@ -271,7 +273,7 @@ FUNCTION FindNode(DataItem) RETURNS INTEGER // returns pointer to node
 ENDFUNCTION
 ```
 
-#### Delete a node from an ordered linked list
+##### Delete a node from an ordered linked list
 
 ```Pseudocode
 PROCEDURE DeleteNode(DataItem)
@@ -280,41 +282,101 @@ PROCEDURE DeleteNode(DataItem)
         AND List[ThisNodePtr].Data <> DataItem DO
             PreviousNodePtr ← ThisNodePtr
             ThisNodePtr ← List[ThisNodePtr].Pointer
-	ENDWHILE
-	IF ThisNodePtr <> NullPointer
-		THEN
-			IF ThisNodePtr = StartPointer
-				THEN
-					StartPointer ← List[StartPointer].Pointer
-				ELSE
-					// it is not the start node;
-					// so make the previous node’s pointer point to
-					// the current node’s 'next' pointer; thereby removing all
-					// references to the current pointer from the list
-					List[PreviousNodePtr].Pointer ← List[ThisNodePtr].Pointer
-			ENDIF
-			List[ThisNodePtr].Pointer ← FreeListPtr
-			FreeListPtr ← ThisNodePtr
-	ENDIF
+    ENDWHILE
+    IF ThisNodePtr <> NullPointer
+        THEN
+            IF ThisNodePtr = StartPointer
+                THEN
+                    StartPointer ← List[StartPointer].Pointer
+                ELSE
+                    // it is not the start node;
+                    // so make the previous node’s pointer point to
+                    // the current node’s 'next' pointer; thereby removing all
+                    // references to the current pointer from the list
+                    List[PreviousNodePtr].Pointer ← List[ThisNodePtr].Pointer
+            ENDIF
+            List[ThisNodePtr].Pointer ← FreeListPtr
+            FreeListPtr ← ThisNodePtr
+    ENDIF
 ENDPROCEDURE
 ```
 
-#### Access all nodes stored in the linked list
+##### Access all nodes stored in the linked list
 
 ```Pseudocode
 PROCEDURE OutputAllNodes
-	CurrentNodePtr ← StartPointer // start at beginning of list
-	WHILE CurrentNodePtr <> NullPointer DO // while not end of list
-		OUTPUT List[CurrentNodePtr].Data
-		// follow the pointer to the next node
-		CurrentNodePtr ← List[CurrentNodePtr].Pointer
-	ENDWHILE
+    CurrentNodePtr ← StartPointer // start at beginning of list
+    WHILE CurrentNodePtr <> NullPointer DO // while not end of list
+        OUTPUT List[CurrentNodePtr].Data
+        // follow the pointer to the next node
+        CurrentNodePtr ← List[CurrentNodePtr].Pointer
+    ENDWHILE
 ENDPROCEDURE
+```
+
+#### Python
+
+```Python
+#Python program for finding an item in a linked list
+myLinkedList = [27, 19, 36, 42, 16, None, None, None, None, None, None, None]
+myLinkedListPointers = [-1, 0, 1, 2, 3 ,6 ,7 ,8 ,9 ,10 ,11, -1]
+startPointer = 4
+nullPointer = -1
+def find(itemSearch):
+    found = False
+    itemPointer = startPointer
+    while itemPointer != nullPointer and not found:
+        if myLinkedList[itemPointer] == itemSearch:
+            found = True
+        else:
+            itemPointer = myLinkedListPointers[itemPointer]
+    return itemPointer
+#enter item to search for
+item = int(input("Please enter item to be found "))
+result = find(item)
+if result != -1:
+    print("Item found")
+else:
+    print("Item not found")
+
+
+#Python program for adding an item in a linked list
+def insert(itemAdd):
+    global startPointer
+    if heapStartPointer == nullPointer:
+        print("Linked List full")
+    else:
+        tempPointer = startPointer
+        startPointer = heapStartPointer
+        heapStartPointer = myLinkedListPointers[heapStartPointer]
+        myLinkedList[startPointer] = itemAdd
+        myLinkedListPointers[startPointer] = tempPointer
+
+
+
+#The following procedure deletes an item from a linked list.
+def delete(itemDelete):
+    global startPointer, heapStartPointer
+    if startPointer == nullPointer:
+        print("Linked List empty")
+    else:
+        index = startPointer
+        while myLinkedList[index] != itemDelete and index != nullPointer:
+            oldindex = index
+            index = myLinkedListPointers[index]
+    if index == nullPointer:
+        print("Item ", itemDelete, " not found")
+    else:
+        myLinkedList[index] = None
+        tempPointer = myLinkedListPointers[index]
+        myLinkedListPointers[index] = heapStartPointer
+        heapStartPointer = index
+        myLinkedListPointers[oldindex] = tempPointer
 ```
 
 <br>
 
-## Binary trees
+### Binary trees
 
 - Write algorithms to find an item in each of the following: linked list, binary tree
 - Write algorithms to insert an item into each of the following: stack, queue, linked list, binary tree
@@ -328,34 +390,34 @@ ENDPROCEDURE
 We can store the binary tree in an array of records (see Figure 23.05). One record represents a node and consists of the data and a left pointer and a right pointer. Unused nodes are linked together to form a free list.
 ![](cs-note-img/Pastedimage20211228090016.png)
 
-### Pseudocode
+#### Pseudocode
 
-#### Create a new binary tree
+##### Create a new binary tree
 
 ```Pseudocode
 // NullPointer should be set to -1 if using array element with index 0
 CONSTANT NullPointer = –1
 // Declare record type to store data and pointers
 TYPE TreeNode
-	DECLARE Data : STRING
-	DECLARE LeftPointer : INTEGER
-	DECLARE RightPointer : INTEGER
+    DECLARE Data : STRING
+    DECLARE LeftPointer : INTEGER
+    DECLARE RightPointer : INTEGER
 ENDTYPE
 DECLARE RootPointer : INTEGER
 DECLARE FreePtr : INTEGER
 DECLARE Tree : ARRAY[0 : 6] OF TreeNode
 
 PROCEDURE InitialiseTree
-	RootPointer ← NullPointer // set start pointer
-	FreePtr ← 0 // set starting position of free list
-	FOR Index ← 0 TO 5 // link all nodes to make free list
-		Tree[Index].LeftPointer ← Index + 1
-	NEXT Index
-	Tree[6].LeftPointer ← NullPointer // last node of free list
+    RootPointer ← NullPointer // set start pointer
+    FreePtr ← 0 // set starting position of free list
+    FOR Index ← 0 TO 5 // link all nodes to make free list
+        Tree[Index].LeftPointer ← Index + 1
+    NEXT Index
+    Tree[6].LeftPointer ← NullPointer // last node of free list
 ENDPROCEDURE
 ```
 
-#### Insert a new node into a binary tree
+##### Insert a new node into a binary tree
 
 ```Pseudocode
 PROCEDURE InsertNode(NewItem)
@@ -368,7 +430,7 @@ PROCEDURE InsertNode(NewItem)
         Tree[NewNodePtr].LeftPointer ← NullPointer
         Tree[NewNodePtr].RightPointer ← NullPointer
 
-	// check if empty tree
+    // check if empty tree
         IF RootPointer = NullPointer
             THEN // insert new node at root
                 RootPointer ← NewNodePtr
@@ -396,36 +458,49 @@ PROCEDURE InsertNode(NewItem)
 ENDPROCEDURE
 ```
 
-#### Find a node in a binary tree
+##### Find a node in a binary tree
 
 ```Pseudocode
 FUNCTION FindNode(SearchItem) RETURNS INTEGER // returns pointer to node
-	ThisNodePtr ← RootPointer // start at the root of the tree
-	WHILE ThisNodePtr <> NullPointer // while a pointer to follow
-		AND Tree[ThisNodePtr].Data <> SearchItem DO // and search item not found
-			IF Tree[ThisNodePtr].Data > SearchItem
-				THEN // follow left pointer
-					ThisNodePtr ← Tree[ThisNodePtr].LeftPointer
-				ELSE // follow right pointer
-					ThisNodePtr ← Tree[ThisNodePtr].RightPointer
-			ENDIF
-	ENDWHILE
-	RETURN ThisNodePtr // will return null pointer if search item not found
+    ThisNodePtr ← RootPointer // start at the root of the tree
+    WHILE ThisNodePtr <> NullPointer // while a pointer to follow
+        AND Tree[ThisNodePtr].Data <> SearchItem DO // and search item not found
+            IF Tree[ThisNodePtr].Data > SearchItem
+                THEN // follow left pointer
+                    ThisNodePtr ← Tree[ThisNodePtr].LeftPointer
+                ELSE // follow right pointer
+                    ThisNodePtr ← Tree[ThisNodePtr].RightPointer
+            ENDIF
+    ENDWHILE
+    RETURN ThisNodePtr // will return null pointer if search item not found
 ENDFUNCTION
+```
+
+#### Python
+```Python
+def FindLeaves(CurrentNode): 
+    global BinaryTree 
+    if(BinaryTree[CurrentNode].LeftPointer != -1): 
+        FindLeaves(BinaryTree[CurrentNode].LeftPointer) 
+    if(BinaryTree[CurrentNode].RightPointer != -1): 
+        FindLeaves(BinaryTree[CurrentNode].RightPointer) 
+    if((BinaryTree[CurrentNode].RightPointer == -1) and (BinaryTree[CurrentNode].LeftPointer == -1)): 
+        print BinaryTree[CurrentNode].DataValue
+    return 
 ```
 
 <br>
 
-## Stacks
+### Stacks
 
 - Note that **BaseOfStackPointer** will always point to element 0 of the array.
 - **TopOfStackPointer** will vary. It will increase when an item is pushed- onto the stack and it will decrease when an item is popped off the stack.
 - When the stack is empty, **TopOfStackPointer** will have the value **–1**.
   ![](cs-note-img/Pastedimage20211228091102.png)
 
-### Pseudocode
+#### Pseudocode
 
-#### Create a new stack
+##### Create a new stack
 
 ```Pseudocode
 CONSTANT EMPTYSTRING = ""
@@ -435,55 +510,87 @@ DECLARE BaseOfStackPointer : INTEGER
 DECLARE TopOfStackPointer : INTEGER
 DECLARE Stack : ARRAY[0 : MaxStackSize – 1] OF STRING
 PROCEDURE InitialiseStack
-	BaseOfStackPointer ← 0 // set base of stack pointer
-	TopOfStackPointer ← NullPointer // set top of stack pointer
+    BaseOfStackPointer ← 0 // set base of stack pointer
+    TopOfStackPointer ← NullPointer // set top of stack pointer
 ENDPROCEDURE
 ```
 
-#### Push an item onto the stack
+##### Push an item onto the stack
 
 ```Pseudocode
 PROCEDURE Push(NewItem)
-	IF TopOfStackPointer < MaxStackSize – 1
-		THEN   // there is space on the stack
-			   // increment top of stack pointer
-			TopOfStackPointer ← TopOfStackPointer + 1
-			   // add item to top of stack
-			Stack[TopOfStackPointer] ← NewItem
-	ENDIF
+    IF TopOfStackPointer < MaxStackSize – 1
+        THEN   // there is space on the stack
+               // increment top of stack pointer
+            TopOfStackPointer ← TopOfStackPointer + 1
+               // add item to top of stack
+            Stack[TopOfStackPointer] ← NewItem
+    ENDIF
 ENDPROCEDURE
 ```
 
-#### Pop an item off the stack
+##### Pop an item off the stack
 
 ```Pseudocode
 FUNCTION Pop()
-	DECLARE Item : STRING
-	Item ← EMPTYSTRING
-	IF TopOfStackPointer > NullPointer
-		THEN // there is at least one item on the stack
-			 // pop item off the top of the stack
-			Item ← Stack[TopOfStackPointer]
-			Stack[TopOfStackPointer] ← EMPTYSTRING
-			 // decrement top of stack pointer
-			TopOfStackPointer ← TopOfStackPointer – 1
-	ENDIF
-	RETURN Item
+    DECLARE Item : STRING
+    Item ← EMPTYSTRING
+    IF TopOfStackPointer > NullPointer
+        THEN // there is at least one item on the stack
+             // pop item off the top of the stack
+            Item ← Stack[TopOfStackPointer]
+            Stack[TopOfStackPointer] ← EMPTYSTRING
+             // decrement top of stack pointer
+            TopOfStackPointer ← TopOfStackPointer – 1
+    ENDIF
+    RETURN Item
 ENDFUNCTION
+```
+
+#### Python
+
+```Python
+def init_stack(n):
+    base_pointer = 0
+    top_pointer = -1
+    stack = ["" for i in range(n)]
+
+def add_item(item):
+    global base_pointer
+    global top_pointer
+    global stack
+    if top_pointer+1 == len(stack):
+        return "stack is full"
+    else:
+        stack[top_pointer+1]=item
+        top_pointer = top_pointer+1
+        return "success"
+
+def pop_item():
+    global base_pointer
+    global top_pointer
+    global stack
+    if top_pointer == -1:
+        return "stack is empty"
+    else:
+        stack[top_pointer] = ""
+        top_pointer = top_pointer-1
+        return "success"
+
 ```
 
 <br>
 
-## Queues
+### Queues
 
 **FrontOfQueuePointer** always points to the first element in the queue, that is the next element to be taken from the queue. **EndOfQueuePointer** always points to the last element in the queue. Before another element joins the queue, the **EndOfQueuePointer** is incremented.
 
 - To make it easier to test whether the queue is empty or full, a counter variable can be used.
   ![](cs-note-img/Pastedimage20211228135844.png)
 
-### Pseudocode
+#### Pseudocode
 
-#### Create a new queue
+##### Create a new queue
 
 ```Pseudocode
 CONSTANT EMPTYSTRING = ""
@@ -494,64 +601,99 @@ DECLARE EndOfQueuePointer : INTEGER
 DECLARE NumberInQueue : INTEGER
 DECLARE Queue : ARRAY[0 : MaxQueueSize – 1] OF STRING
 PROCEDURE InitialiseQueue
-	FrontOfQueuePointer ← NullPointer // set front of queue pointer
-	EndOfQueuePointer ← NullPointer   // set end of queue pointer
-	NumberInQueue ← 0                 // no elements in queue
+    FrontOfQueuePointer ← NullPointer // set front of queue pointer
+    EndOfQueuePointer ← NullPointer   // set end of queue pointer
+    NumberInQueue ← 0                 // no elements in queue
 ENDPROCEDURE
 ```
 
-#### Add an item to the queue
+##### Add an item to the queue
 
 ```Pseudocode
 PROCEDURE AddToQueue(NewItem)
-	IF NumberInQueue < MaxQueueSize
-		THEN // there is space in the queue
-			 // increment end of queue pointer
-			EndOfQueuePointer ← EndOfQueuePointer + 1
-			 // check for wrap-round
-			IF EndOfQueuePointer > MaxQueueSize – 1
-				THEN // wrap to beginning of array
-					EndOfQueuePointer ← 0
-					 // add item to end of queue
-			ENDIF
-			Queue[EndOfQueuePointer] ← NewItem
-			// increment counter
-			NumberInQueue ← NumberInQueue + 1
-	ENDIF
+    IF NumberInQueue < MaxQueueSize
+        THEN // there is space in the queue
+             // increment end of queue pointer
+            EndOfQueuePointer ← EndOfQueuePointer + 1
+             // check for wrap-round
+            IF EndOfQueuePointer > MaxQueueSize – 1
+                THEN // wrap to beginning of array
+                    EndOfQueuePointer ← 0
+                     // add item to end of queue
+            ENDIF
+            Queue[EndOfQueuePointer] ← NewItem
+            // increment counter
+            NumberInQueue ← NumberInQueue + 1
+    ENDIF
 ENDPROCEDURE
 ```
 
-#### Remove an item from the queue
+##### Remove an item from the queue
 
 ```Pseudocode
 FUNCTION RemoveFromQueue()
-	DECLARE Item : STRING
-	Item ← EMPTYSTRING
-	IF NumberInQueue > 0
-		THEN // there is at least one item in the queue
-			 // remove item from the front of the queue
-			Item ← Queue[FrontOfQueuePointer]
-			NumberInQueue ← NumberInQueue – 1
-			IF NumberInQueue = 0
-				THEN // if queue empty, reset pointers
-					CALL InitialiseQueue
-				ELSE
-					// increment front of queue pointer
-					FrontOfQueuePointer ← FrontOfQueuePointer + 1
-					// check for wrap-round
-					IF FrontOfQueuePointer > MaxQueueSize – 1
-						THEN // wrap to beginning of array
-							FrontOfQueuePointer ← 0
-					ENDIF
-			ENDIF
-	ENDIF
-	RETURN Item
+    DECLARE Item : STRING
+    Item ← EMPTYSTRING
+    IF NumberInQueue > 0
+        THEN // there is at least one item in the queue
+             // remove item from the front of the queue
+            Item ← Queue[FrontOfQueuePointer]
+            NumberInQueue ← NumberInQueue – 1
+            IF NumberInQueue = 0
+                THEN // if queue empty, reset pointers
+                    CALL InitialiseQueue
+                ELSE
+                    // increment front of queue pointer
+                    FrontOfQueuePointer ← FrontOfQueuePointer + 1
+                    // check for wrap-round
+                    IF FrontOfQueuePointer > MaxQueueSize – 1
+                        THEN // wrap to beginning of array
+                            FrontOfQueuePointer ← 0
+                    ENDIF
+            ENDIF
+    ENDIF
+    RETURN Item
 ENDFUNCTION
+```
+
+#### Python
+
+```Python
+def init_queue(n):
+    queue = ["" for i in range(n)]
+    frontpointer = 0
+    endpointer = 0
+
+def add_item(item):
+    global queue
+    global frontpointer
+    global endpointer
+    if "" in queue == False:
+        return "queue is full"
+    else:
+        if endpointer+1 == len(queue):
+            queue[0] = item
+            endpointer = 0
+        else:
+            queue[endpointer+1]=item
+            endpointer = endpointer+1
+        return "success"
+
+def pop_item():
+    global queue
+    global frontpointer
+    global endpointer
+    if frontpointer+1 == len(queue):
+        queue[frontpointer] = ""
+        frontpointer = 0
+    else:
+        queue[frontpointer] = ""
+        frontpointer = frontpointer + 1
 ```
 
 <br>
 
-## Graphs
+### Graphs
 
 - Graphs are used to record relationships between things.
 - A labelled (weighted) graph has edges with values representing something.
@@ -565,7 +707,7 @@ ENDFUNCTION
   ![](cs-note-img/Pastedimage20211228200446.png)
   <br>
 
-## Hash tables
+### Hash tables
 
 - To store records in an array and have direct access to records, we can use the concept of a hash table.
 - We calculate an address (the array index) from the key value of the record and store the record at this address. When we search for a record, we calculate the address from the key and go to the calculated address to find the record. Calculating an address from a key is called ‘hashing’.
@@ -576,58 +718,57 @@ Finding a hashing function that will give a unique address from a unique key val
 - using overflow areas: all collisions are stored in a separate overflow area, known as ‘closed hashing’
 - using neighbouring slots: perform a linear search from the hashed address to find an empty slot, known as ‘open hashing’
 
-### Pseudocode
+#### Pseudocode
 
-#### Insert a record into a hash table
+##### Insert a record into a hash table
 
 ```Pseudocode
 PROCEDURE Insert(NewRecord)
-	Index ← Hash(NewRecord.Key)
-	WHILE HashTable[Index] NOT empty DO
-		Index ← Index + 1 // go to next slot to check if empty
-		IF Index > Max    // beyond table boundary?
-			THEN          // wrap around to beginning of table
-				Index ← 0
-		ENDIF
-	ENDWHILE
-	HashTable[Index] ← NewRecord
+    Index ← Hash(NewRecord.Key)
+    WHILE HashTable[Index] NOT empty DO
+        Index ← Index + 1 // go to next slot to check if empty
+        IF Index > Max    // beyond table boundary?
+            THEN          // wrap around to beginning of table
+                Index ← 0
+        ENDIF
+    ENDWHILE
+    HashTable[Index] ← NewRecord
 ENDPROCEDURE
 ```
 
-#### Find a record in a hash table
+##### Find a record in a hash table
 
 ```Pseudocode
 FUNCTION FindRecord(SearchKey) RETURNS Record
-	Index ← Hash(SearchKey)
-	WHILE (HashTable[Index].Key <> SearchKey) AND (HashTable[Index] NOT empty) DO
-		Index ← Index + 1     // go to next slot
-		IF Index > Max        // beyond table boundary?
-			THEN              // wrap around to beginning of table
-				Index ← 0
-		ENDIF
-	ENDWHILE
-	IF HashTable[Index] NOT empty   // if record found
-		THEN
-			RETURN HashTable[Index] // return the record
-	ENDIF
+    Index ← Hash(SearchKey)
+    WHILE (HashTable[Index].Key <> SearchKey) AND (HashTable[Index] NOT empty) DO
+        Index ← Index + 1     // go to next slot
+        IF Index > Max        // beyond table boundary?
+            THEN              // wrap around to beginning of table
+                Index ← 0
+        ENDIF
+    ENDWHILE
+    IF HashTable[Index] NOT empty   // if record found
+        THEN
+            RETURN HashTable[Index] // return the record
+    ENDIF
 ENDFUNCTION
 ```
 
 <br>
 
-## Dictionaries
+### Dictionaries
 
 An ADT dictionary in computer science is implemented using a hash table (see Section 23.11), so that a value can be looked up using a direct-access method.
 
-### Pseudocode
+#### Pseudocode
 
 ```Pseudocode
 TYPE DictionaryEntry
-	DECLARE Key : STRING
-	DECLARE Value : STRING
+    DECLARE Key : STRING
+    DECLARE Value : STRING
 ENDTYPE
-DECLARE EnglishFrench : ARRAY[0 : 999] OF DictionaryEntry // empty
-dictionary
+DECLARE EnglishFrench : ARRAY[0 : 999] OF DictionaryEntry // empty dictionary
 ENDTYPE
 ```
 

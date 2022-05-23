@@ -201,11 +201,11 @@ def binary_search(alist,item):
 
 ## Abstract Data Types (ADTs)
 
-## Linked lists
+### Linked lists
 
-### Pseudocode
+#### Pseudocode
 
-#### Create a new linked list
+##### Create a new linked list
 
 ```Pseudocode
 // NullPointer should be set to -1 if using array element with index 0
@@ -228,7 +228,7 @@ PROCEDURE InitialiseList
 ENDPROCEDURE
 ```
 
-#### Insert a new node into an ordered linked list
+##### Insert a new node into an ordered linked list
 
 ```Pseudocode
 PROCEDURE InsertNode(NewItem)
@@ -259,7 +259,7 @@ PROCEDURE InsertNode(NewItem)
 ENDPROCEDURE
 ```
 
-#### Find an element in an ordered linked list
+##### Find an element in an ordered linked list
 
 ```Pseudocode
 FUNCTION FindNode(DataItem) RETURNS INTEGER // returns pointer to node
@@ -273,7 +273,7 @@ FUNCTION FindNode(DataItem) RETURNS INTEGER // returns pointer to node
 ENDFUNCTION
 ```
 
-#### Delete a node from an ordered linked list
+##### Delete a node from an ordered linked list
 
 ```Pseudocode
 PROCEDURE DeleteNode(DataItem)
@@ -301,7 +301,7 @@ PROCEDURE DeleteNode(DataItem)
 ENDPROCEDURE
 ```
 
-#### Access all nodes stored in the linked list
+##### Access all nodes stored in the linked list
 
 ```Pseudocode
 PROCEDURE OutputAllNodes
@@ -314,7 +314,7 @@ PROCEDURE OutputAllNodes
 ENDPROCEDURE
 ```
 
-### Python
+#### Python
 
 ```Python
 #Python program for finding an item in a linked list
@@ -376,7 +376,7 @@ def delete(itemDelete):
 
 <br>
 
-## Binary trees
+### Binary trees
 
 - Write algorithms to find an item in each of the following: linked list, binary tree
 - Write algorithms to insert an item into each of the following: stack, queue, linked list, binary tree
@@ -390,9 +390,9 @@ def delete(itemDelete):
 We can store the binary tree in an array of records (see Figure 23.05). One record represents a node and consists of the data and a left pointer and a right pointer. Unused nodes are linked together to form a free list.
 ![](cs-note-img/Pastedimage20211228090016.png)
 
-### Pseudocode
+#### Pseudocode
 
-#### Create a new binary tree
+##### Create a new binary tree
 
 ```Pseudocode
 // NullPointer should be set to -1 if using array element with index 0
@@ -417,7 +417,7 @@ PROCEDURE InitialiseTree
 ENDPROCEDURE
 ```
 
-#### Insert a new node into a binary tree
+##### Insert a new node into a binary tree
 
 ```Pseudocode
 PROCEDURE InsertNode(NewItem)
@@ -458,7 +458,7 @@ PROCEDURE InsertNode(NewItem)
 ENDPROCEDURE
 ```
 
-#### Find a node in a binary tree
+##### Find a node in a binary tree
 
 ```Pseudocode
 FUNCTION FindNode(SearchItem) RETURNS INTEGER // returns pointer to node
@@ -476,7 +476,7 @@ FUNCTION FindNode(SearchItem) RETURNS INTEGER // returns pointer to node
 ENDFUNCTION
 ```
 
-### Python
+#### Python
 ```Python
 def FindLeaves(CurrentNode): 
     global BinaryTree 
@@ -491,16 +491,16 @@ def FindLeaves(CurrentNode):
 
 <br>
 
-## Stacks
+### Stacks
 
 - Note that **BaseOfStackPointer** will always point to element 0 of the array.
 - **TopOfStackPointer** will vary. It will increase when an item is pushed- onto the stack and it will decrease when an item is popped off the stack.
 - When the stack is empty, **TopOfStackPointer** will have the value **–1**.
   ![](cs-note-img/Pastedimage20211228091102.png)
 
-### Pseudocode
+#### Pseudocode
 
-#### Create a new stack
+##### Create a new stack
 
 ```Pseudocode
 CONSTANT EMPTYSTRING = ""
@@ -515,7 +515,7 @@ PROCEDURE InitialiseStack
 ENDPROCEDURE
 ```
 
-#### Push an item onto the stack
+##### Push an item onto the stack
 
 ```Pseudocode
 PROCEDURE Push(NewItem)
@@ -529,7 +529,7 @@ PROCEDURE Push(NewItem)
 ENDPROCEDURE
 ```
 
-#### Pop an item off the stack
+##### Pop an item off the stack
 
 ```Pseudocode
 FUNCTION Pop()
@@ -547,7 +547,7 @@ FUNCTION Pop()
 ENDFUNCTION
 ```
 
-### Python
+#### Python
 
 ```Python
 def init_stack(n):
@@ -581,16 +581,16 @@ def pop_item():
 
 <br>
 
-## Queues
+### Queues
 
 **FrontOfQueuePointer** always points to the first element in the queue, that is the next element to be taken from the queue. **EndOfQueuePointer** always points to the last element in the queue. Before another element joins the queue, the **EndOfQueuePointer** is incremented.
 
 - To make it easier to test whether the queue is empty or full, a counter variable can be used.
   ![](cs-note-img/Pastedimage20211228135844.png)
 
-### Pseudocode
+#### Pseudocode
 
-#### Create a new queue
+##### Create a new queue
 
 ```Pseudocode
 CONSTANT EMPTYSTRING = ""
@@ -607,7 +607,7 @@ PROCEDURE InitialiseQueue
 ENDPROCEDURE
 ```
 
-#### Add an item to the queue
+##### Add an item to the queue
 
 ```Pseudocode
 PROCEDURE AddToQueue(NewItem)
@@ -628,7 +628,7 @@ PROCEDURE AddToQueue(NewItem)
 ENDPROCEDURE
 ```
 
-#### Remove an item from the queue
+##### Remove an item from the queue
 
 ```Pseudocode
 FUNCTION RemoveFromQueue()
@@ -656,7 +656,7 @@ FUNCTION RemoveFromQueue()
 ENDFUNCTION
 ```
 
-### Python
+#### Python
 
 ```Python
 def init_queue(n):
@@ -693,7 +693,7 @@ def pop_item():
 
 <br>
 
-## Graphs
+### Graphs
 
 - Graphs are used to record relationships between things.
 - A labelled (weighted) graph has edges with values representing something.
@@ -707,7 +707,7 @@ def pop_item():
   ![](cs-note-img/Pastedimage20211228200446.png)
   <br>
 
-## Hash tables
+### Hash tables
 
 - To store records in an array and have direct access to records, we can use the concept of a hash table.
 - We calculate an address (the array index) from the key value of the record and store the record at this address. When we search for a record, we calculate the address from the key and go to the calculated address to find the record. Calculating an address from a key is called ‘hashing’.
@@ -718,9 +718,9 @@ Finding a hashing function that will give a unique address from a unique key val
 - using overflow areas: all collisions are stored in a separate overflow area, known as ‘closed hashing’
 - using neighbouring slots: perform a linear search from the hashed address to find an empty slot, known as ‘open hashing’
 
-### Pseudocode
+#### Pseudocode
 
-#### Insert a record into a hash table
+##### Insert a record into a hash table
 
 ```Pseudocode
 PROCEDURE Insert(NewRecord)
@@ -736,7 +736,7 @@ PROCEDURE Insert(NewRecord)
 ENDPROCEDURE
 ```
 
-#### Find a record in a hash table
+##### Find a record in a hash table
 
 ```Pseudocode
 FUNCTION FindRecord(SearchKey) RETURNS Record
@@ -757,11 +757,11 @@ ENDFUNCTION
 
 <br>
 
-## Dictionaries
+### Dictionaries
 
 An ADT dictionary in computer science is implemented using a hash table (see Section 23.11), so that a value can be looked up using a direct-access method.
 
-### Pseudocode
+#### Pseudocode
 
 ```Pseudocode
 TYPE DictionaryEntry
