@@ -136,7 +136,7 @@ categoryID = "DIC_kwDOHSNORc4CPLZB"
 mapping = "title"
 lightTheme = "light"
 darkTheme = "dark_dimmed"
-reactionsEnabled = 1
+reactionsEnabled = 0
 emitMetadata = 0
 
 [comments.gitalk]
